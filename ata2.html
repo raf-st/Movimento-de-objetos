@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>5 coisitas</title>
+</head>
+<style>
+    section{
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+    }
+    #ata, #ate, #ati{
+        background-color: cadetblue;
+        width: 100px;
+        height: 100px;
+        border-radius: 10px;
+    }
+    #ate{
+        background-color: crimson;
+    }
+    #ati{
+        background-color: deeppink;
+    }
+    #ato, #atu{
+        background-color: rgb(231, 231, 87);
+        position: absolute;
+        width: 100px;
+        height: 100px;
+        border-radius: 10px;
+        display: flex;
+        justify-content: space-around;
+    }
+    #atu{
+        background-color: indigo;
+        width: 50px;
+        height: 50px;
+    }
+</style>
+
+<body>
+    <section>
+        <div id="ata"></div>
+        <div id="ate"></div>
+        <div id="ati"></div>
+    </section>
+    <div id="ato"></div>
+    <div id="atu"></div>
+
+    <script>
+        const saltita = document.getElementById("ato");
+        const character = document.getElementById("atu");
+        const viewportWidth = window.innerWidth;
+        const viewportHeight = window.innerHeight;
+        console.log(viewportWidth);
+        console.log(viewportHeight);
+
+        let xATA = 200;
+        let yATA = 300;
+        let ahh = 200;
+        let  ohh = 300;
+        let step = 20;
+        let Directionx = 1;
+        let Directiony = 1;
+
+
+        function saltar() {
+
+            if (
+                xATA > viewportWidth - 50 || xATA < 0
+            ) {
+                Directionx *= -1.3
+                step++
+            }
+            else if (
+                yATA > viewportHeight - 50 || yATA < 0
+            ) {
+                Directiony *= -1.1
+                step++
+            }
+
+            xATA += step * Directionx
+            yATA += step * Directiony
+            saltita.style.left = xATA + 'px';
+            saltita.style.top = yATA + 'px';
+
+            setTimeout(saltar, 100)
+        }
+        //quando carrega a pagina
+        saltar()
+
+        //ata anda sozinho
+
+        document.addEventListener('keydown', (event) => {
+            const key = event.key;
+
+            if (key === "ArrowUp") {
+                ohh -= 10;
+            }
+            else if (key === 'ArrowDown') {
+                ohh += 10;
+            }
+            else if (key === 'ArrowLeft') {
+                ahh -= 10;
+            }
+            else if (key === 'ArrowRight') {
+                ahh += 10;
+            }
+
+            character.style.left = ahh + 'px';
+            character.style.top = ohh + 'px';
+        })
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+</head>
+<style>
+#vdd, #mntr{
+    position: absolute;
+        background-color: cadetblue;
+        width: 100px;
+        height: 100px;
+        border-radius: 10px;
+    }
+    #mntr{
+        background-color: crimson;
+    }
+</style>
+<body>
+    <div id="vdd"></div>
+    <div id="mntr"></div>
+    <script>
+        const ata0 = document.getElementById("vdd");
+        const ata1 = document.getElementById("mntr");
+        const viewportWidth = window.innerWidth;
+        const viewportHeight = window.innerHeight;
+        console.log(viewportWidth);
+        console.log(viewportHeight);
+
+        let xATA = 200;
+        let yATA = 300;
+        let xxATA = 200;
+        let yyATA = 300;
+        let step = 20;
+        let Directionx = 1;
+        let Directiony = 1;
+
+        document.addEventListener('keydown', (event) => {
+            const key = event.key;
+
+            if (key === "ArrowUp") {
+                yATA -= 10;
+            }
+            else if (key === 'ArrowDown') {
+                yATA += 10;
+            }
+            else if (key === 'ArrowLeft') {
+                xATA -= 10;
+            }
+            else if (key === 'ArrowRight') {
+                xATA += 10;
+            }
+
+            ata0.style.left = xATA + 'px';
+            ata0.style.top = yATA + 'px';
+        })
+
+        document.addEventListener('keydown', (event) => {
+            const key = event.key;
+
+            if (key === "w") {
+                yyATA -= 10;
+            }
+            else if (key === 's') {
+                yyATA += 10
+            }
+            else if (key === 'a') {
+                xxATA -= 10;
+            }
+            else if (key === 'd') {
+                xxATA += 10;
+            }
+
+            ata1.style.left = xxATA + 'px';
+            ata1.style.top = yyATA + 'px';
+        })
+        
+    </script>
+</body>
+</html>

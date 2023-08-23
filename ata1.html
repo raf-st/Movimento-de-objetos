@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2 coisas OMG</title>
+</head>
+<style>
+    #mana,
+    #mano {
+        background-color: blue;
+        position: absolute;
+        width: 100px;
+        height: 100px;
+        border-radius: 10px;
+        display: flex;
+        justify-content: space-around;
+    }
+
+    #mano {
+        top: 20%!important;
+        background-color: crimson;
+    }
+</style>
+
+<body>
+    <div id="mana">nao?</div>
+    <div id="mano">sim?</div>
+    <script>
+        const pular = document.getElementById("mana");
+        const saltar = document.getElementById("mano");
+        const viewportWidth = window.innerWidth;
+        const viewportHeight = window.innerHeight;
+        console.log(viewportWidth);
+        console.log(viewportHeight);
+
+        let xMTVC = 200;
+        let yMTVC = 300;
+        let step = 20;
+        let Directionx = 1;
+        let Directiony = 1;
+
+
+        function pula() {
+
+            if (
+                xMTVC > viewportWidth - 50 || xMTVC < 0
+            ) {
+                Directionx *= -1.3
+                step++
+            }
+            else if (
+                yMTVC > viewportHeight - 50 || yMTVC < 0
+            ) {
+                Directiony *= -1.1
+                step++
+            }
+
+            xMTVC += step * Directionx
+            yMTVC += step * Directiony
+            pular.style.left = xMTVC + 'px';
+            pular.style.top = yMTVC + 'px';
+
+            setTimeout(pula, 100)
+        }
+        //quando carrega a pagina
+        pula()
+
+        function desliza() {
+
+            if (
+                xMTVC > viewportWidth - 50 || xMTVC < 0
+            ) {
+                Directionx *= -1.3
+                step++
+            }
+            else if (
+                yMTVC > viewportHeight - 50 || yMTVC < 0
+            ) {
+                Directiony *= -1.1
+                step++
+            }
+
+            xMTVC += step * Directionx
+            yMTVC += step * Directiony
+            saltar.style.left = xMTVC + 'px';
+            saltar.style.top = yMTVC + 'px';
+
+            setTimeout(desliza, 100)
+        }
+        //quando carrega a pagina
+        desliza()
+    </script>
+</body>
+
+</html>
